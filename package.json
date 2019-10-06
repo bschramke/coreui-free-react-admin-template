@@ -37,6 +37,7 @@
     "simple-line-icons": "^2.4.1"
   },
   "devDependencies": {
+    "flow-bin": "^0.109.0",
     "react-scripts": "^3.2.0"
   },
   "scripts": {
@@ -45,7 +46,8 @@
     "test": "react-scripts test",
     "test:cov": "npm test -- --coverage --watchAll=false",
     "test:debug": "react-scripts --inspect-brk test --runInBand",
-    "eject": "react-scripts eject"
+    "eject": "react-scripts eject",
+    "flow": "flow"
   },
   "bugs": {
     "url": "https://github.com/coreui/coreui-free-react-admin-template/issues"
