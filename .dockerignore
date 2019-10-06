@@ -1,0 +1,9 @@
+.git
+Dockerfile
+.DS_Store
+.gitignore
+*.md
+LICENSE
+
+node_modules
+build
