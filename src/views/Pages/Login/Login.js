@@ -1,9 +1,15 @@
 import React, { Component } from 'react';
 import { Link } from 'react-router-dom';
-import { Button, Card, CardBody, CardGroup, Col, Container, Form, Input, InputGroup, InputGroupAddon, InputGroupText, Row } from 'reactstrap';
+import { connect } from 'react-redux';
+import { bindActionCreators } from 'redux';
+import { Button, Card, CardBody, CardGroup, Col, Container, Row } from 'reactstrap';
+
+import LoginForm from './LoginForm';
+import { login } from '../../../actions/user.actions';
 
 class Login extends Component {
   render() {
+    const { login } = this.props;
     return (
       <div className="app flex-row align-items-center">
         <Container>
@@ -12,34 +18,7 @@ class Login extends Component {
               <CardGroup>
                 <Card className="p-4">
                   <CardBody>
-                    <Form>
-                      <h1>Login</h1>
-                      <p className="text-muted">Sign In to your account</p>
-                      <InputGroup className="mb-3">
-                        <InputGroupAddon addonType="prepend">
-                          <InputGroupText>
-                            <i className="icon-user"></i>
-                          </InputGroupText>
-                        </InputGroupAddon>
-                        <Input type="text" placeholder="Username" autoComplete="username" />
-                      </InputGroup>
-                      <InputGroup className="mb-4">
-                        <InputGroupAddon addonType="prepend">
-                          <InputGroupText>
-                            <i className="icon-lock"></i>
-                          </InputGroupText>
-                        </InputGroupAddon>
-                        <Input type="password" placeholder="Password" autoComplete="current-password" />
-                      </InputGroup>
-                      <Row>
-                        <Col xs="6">
-                          <Button color="primary" className="px-4">Login</Button>
-                        </Col>
-                        <Col xs="6" className="text-right">
-                          <Button color="link" className="px-0">Forgot password?</Button>
-                        </Col>
-                      </Row>
-                    </Form>
+                    <LoginForm onSubmit={login} />
                   </CardBody>
                 </Card>
                 <Card className="text-white bg-primary py-5 d-md-down-none" style={{ width: '44%' }}>
@@ -63,4 +42,10 @@ class Login extends Component {
   }
 }
 
-export default Login;
+function mapDispatchToProps(dispatch) {
+  return bindActionCreators({
+    login
+  }, dispatch);
+}
+
+export default (connect(null, mapDispatchToProps)(Login));
